@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>Form Validation</title>
+    <style type="text/css">
+    div.kontainer {
+            margin-left:auto;
+            margin-right:auto;
+            width:960px;
+            padding:10px;
+            border-right:30px #999999 groove;
+            height:100%;}div#header {height:30%; background:#FFFFCC}
+    
+    div#navigasi {height:30px; color:#FFFFFF; background:#CC0000; padding:0 10px;}
+    div.tabel {display:table; background:#99CC00}
+    div.row {display:table-row}
+    div.sel {display:table-cell; padding:5px;}
+    div.submit {padding:5px; text-align:right}
+</style>
+</head>
+
+    <script type="text/javascript">
+
+    function validasi()
+    {
+     if( document.fodata.nama.value == "" )
+     {
+     alert( "Please provide your name!" );
+     document.fodata.nama.focus() ;
+     return false;
+     }
+     if( document.fodata.email.value == "" )
+     {
+     alert( "Please provide your email!" );
+     document.fodata.email.focus() ;
+     return false;
+     }else{
+     var emailID = document.fodata.email.value;
+    posisiat = emailID.indexOf("@");
+    posisidot = emailID.lastIndexOf(".");
+    if (posisiat < 1 || ( posisidot - posisiat < 2 ))
+    {
+    alert("Please enter correct email ID")
+    document.fodata.email.focus() ;
+    return false;
+    }
+     }
+     if( document.fodata.pos.value == "" || isNaN( document.fodata.pos.value 
+    ) || document.fodata.pos.value.length != 5 )
+     {
+     alert( "Please provide a zip in the format #####" );
+     document.fodata.pos.focus() ;
+     return false;
+     }
+     if( document.fodata.negara.value == "-1" )
+     {
+     alert( "Please provide your country!" );
+     return false;
+     }
+     return( true );
+    }
+    </script>
+
+    <body>
+        <div class="kontainer">
+            <div id="header"></div>
+            <div id="navigasi">Home</div>
+            <h1>Data Personal</h1>
+            <form action="sv_.php" name="fodata" onsubmit="return(validasi());">
+            <div class="tabel">
+            <div class="row">
+            <div class="sel">Nama Lengkap</div>
+            <div class="sel"><input type="text" name="nama" size="40" /></div>
+        </div>
+
+        <div class="row">
+            <div class="sel">Jenis Kelamin</div>
+            <div class="sel"><input type="text" name="JK" size="25" /></div>
+        </div>
+
+        <div class="row">
+            <div class="sel">E-Mail</div>
+            <div class="sel"><input type="text" name="email" size="60" /></div>
+        </div>
+
+        <div class="row">
+            <div class="sel">Kode pos</div>
+            <div class="sel"><input type="text" name="pos" size="10" /></div>
+         </div>
+
+            <div class="row">
+            <div class="sel">Negara</div>
+            <div class="sel">
+            <select name="negara">
+        
+        <option value="-1" selected>----- Pilih Negara -----</option>
+            <option value="1">Indonesia</option>
+            <option value="2">Amerika Serikat</option>
+            <option value="3">Inggris</option>
+        </select>
+    </div>
+ </div>
+     <div class="row">
+    <div class="submit"><input type="submit" value="Kirim" /></div>
+ </div>
+ </div>
+ </form>
+</div>
+</body>
+</html>
